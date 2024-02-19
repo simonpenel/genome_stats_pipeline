@@ -53,7 +53,6 @@ rule get_blastdb:
         psq=temp("data/ncbi/{accession}/protdb.psq"),
         psi=temp("data/ncbi/{accession}/protdb.psi"),
         psd=temp("data/ncbi/{accession}/protdb.psd"),
-        pog=temp("data/ncbi/{accession}/protdb.pog"),
         pin=temp("data/ncbi/{accession}/protdb.pin"),
         phr=temp("data/ncbi/{accession}/protdb.phr")        
     shell:
@@ -135,7 +134,6 @@ rule read_table:
         psq="data/ncbi/{accession}/protdb.psq",
         psi="data/ncbi/{accession}/protdb.psi",
         psd="data/ncbi/{accession}/protdb.psd",
-        pog="data/ncbi/{accession}/protdb.pog",
         pin="data/ncbi/{accession}/protdb.pin",
         phr="data/ncbi/{accession}/protdb.phr"   
         
