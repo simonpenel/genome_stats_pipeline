@@ -34,8 +34,6 @@ rule get_fna:
         && gunzip  genomic.fna.gz \
         """
  
-
-
 rule calc_stats_on_gff3:
     """
     Calculate statistics.
