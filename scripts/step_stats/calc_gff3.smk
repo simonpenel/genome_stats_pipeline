@@ -44,7 +44,7 @@ rule calc_stats_on_gff3:
         gff="data/ncbi/{accession}/genomic.gff",
         fasta="data/ncbi/{accession}/genomic.fna"
     output:
-        stats="results/{accession}/genomic.gff.statistics.csv"
+        stats="results/{accession}/genomic.gff.statistics.csv",
         #to be removed because this output file is big
         cds_fasta=temp("data/ncbi/{accession}/genomic.gff.generated_CDS.fa")
         #other files are not moved into results for the moment
