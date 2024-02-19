@@ -1,4 +1,4 @@
-configfile: "scripts/step_1/config.json"
+configfile: "scripts/step_get_organisms/config.json"
 
 rule all:
     input:"data/resources/organisms_data"
@@ -34,7 +34,7 @@ rule frauder_le_xml:
         "data/resources/rooted_extraction"
     shell:
         """
-        python3 scripts/step_1/xml_rewrite.py {input} {output}\
+        python3 scripts/step_get_organisms/xml_rewrite.py {input} {output}\
         && rm {input}
         """
 
@@ -47,4 +47,4 @@ rule data_analysis:
     output:
         "data/resources/organisms_data"
     shell:
-        "python3 scripts/step_1/xml_reader.py {input} {output}"
+        "python3 scripts/step_get_organisms/xml_reader.py {input} {output}"
