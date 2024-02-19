@@ -2,7 +2,7 @@ import os
 ACCESSNB = [elt for elt in os.listdir('data/ncbi/') if elt.startswith('GC') == True]
 
 rule all:
-    input: expand("data/ncbi/{accession}/genomic.gff.statistics.csv", accession=ACCESSNB)
+    input: expand("results/{accession}/genomic.gff.statistics.csv", accession=ACCESSNB)
 
 rule get_gff:
     """
@@ -44,6 +44,10 @@ rule calc_stats_on_gff3:
         gff="data/ncbi/{accession}/genomic.gff",
         fasta="data/ncbi/{accession}/genomic.fna"
     output:
-        stats="data/ncbi/{accession}/genomic.gff.statistics.csv"
+        #stats="data/ncbi/{accession}/genomic.gff.statistics.csv"
+        stats="results/{accession}/genomic.gff.statistics.csv"
     shell:
-        "stats_on_gff3_ncbi {input.gff} {input.fasta}"
+        """
+        stats_on_gff3_ncbi {input.gff} {input.fasta} &&
+        mv data/ncbi/{wildcards.accession}/genomic.gff.statistics.csv {output.stats}
+        """
