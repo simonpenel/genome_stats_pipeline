@@ -52,6 +52,7 @@ rule calc_stats_on_gff3:
         stats_on_gff3_ncbi {input.gff} {input.fasta} &&
         mv data/ncbi/{wildcards.accession}/genomic.gff.statistics.csv {output.stats}
         """
+        
 rule calc_gobal_stats:
     """
     Calculate global statistics.
@@ -62,6 +63,6 @@ rule calc_gobal_stats:
         stats="results/{accession}/genomic.fna.global_stats.csv",        
     shell:
         """
-        stats_on_genomes {input.gff} &&
+        stats_on_genomes {input.fasta} &&
         mv data/ncbi/{wildcards.accession}/genomic.fna.global_stats.csv {output.stats}
         """
