@@ -10,6 +10,7 @@ rule ncbi_query:
         query = config['query']
     shell:
         "esearch -db assembly -query {params.query} | efetch -format docsum  |grep -v xml > {output}"
+#       "esearch -db assembly -query {params.query} | efetch -format docsum   > {output}" ### ( grep is useless depending on esearch)        
 
 rule frauder_le_xml:
     """
