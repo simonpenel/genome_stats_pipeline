@@ -16,16 +16,16 @@ Laurent Duret, Simon Penel, Adrien Raimbault
 
 `snakemake -n -s scripts/step_stats/process_global_stats.smk`
 
-This will calculate the global statistics for the organisms who are missing global statistics
+This will calculate the global dna statistics for the organisms who are missing it.
 
 
 
 `snakemake -n -s scripts/step_stats/process_gff3.smk` 
 
-This will calculate the gff statistics for the organisms who are missing gff statistics
+This will calculate the gff dna statistics for the organisms who are missing it.
 
 
 
 `snakemake -n -s scripts/step_stats/process_all_dna_stats.smk`
 
-This will calculate the global statistics AND gff statistics for the organisms who are missing global statistics and/or gff statistics (since input files  will be updated, it will run all the rules depending of these files)
+This will calculate the global dna statistics AND gff dna statistics for the organisms who are missing global dna statistics and/or gff dna statistics (since input files  will be updated, it will run all the rules depending of these files)
