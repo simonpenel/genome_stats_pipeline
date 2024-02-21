@@ -1,7 +1,7 @@
 import os
 ACCESSNB = [elt for elt in os.listdir('data/ncbi/') if elt.startswith('GC') == True]
 
-rule all:
+rule all_global:
     input:
         global_stats = expand("results/{accession}/genomic.fna.global_stats.csv", accession=ACCESSNB)
 
