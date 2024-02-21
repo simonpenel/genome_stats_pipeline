@@ -34,3 +34,8 @@ This will calculate the global dna statistics AND gff dna statistics for the org
 `snakemake --cluster "sbatch" -j 5  -s scripts/step_stats/process_all_dna_stats.smk`
 
 Running on 5 nodes in the cluster
+
+`guix shell snakemake -- snakemake --cluster "sbatch" -j 1  -s scripts/step_stats/process_all_dna_stats.smk`
+
+Why?
+
