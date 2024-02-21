@@ -4,7 +4,6 @@ ACCESSNB = [elt for elt in os.listdir('data/ncbi/') if elt.startswith('GC') == T
 rule all:
     input:
         detailed_stats = expand("results/{accession}/genomic.gff.statistics.csv", accession=ACCESSNB),
-        global_stats = expand("results/{accession}/genomic.fna.global_stats.csv", accession=ACCESSNB)
 
 
 rule get_gff:
@@ -56,16 +55,3 @@ rule calc_stats_on_gff3:
         mv data/ncbi/{wildcards.accession}/genomic.gff.statistics.csv {output.stats}
         """
         
-rule calc_gobal_stats:
-    """
-    Calculate global statistics.
-    """
-    input:
-        fasta="data/ncbi/{accession}/genomic.fna"
-    output:
-        stats="results/{accession}/genomic.fna.global_stats.csv",        
-    shell:
-        """
-        stats_on_genomes {input.fasta} &&
-        mv data/ncbi/{wildcards.accession}/genomic.fna.global_stats.csv {output.stats}
-        """
