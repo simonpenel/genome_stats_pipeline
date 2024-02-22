@@ -31,11 +31,17 @@ This will calculate the gff dna statistics for the organisms who are missing it.
 This will calculate the global dna statistics AND gff dna statistics for the organisms who are missing global dna statistics and/or gff dna statistics (since input files  will be updated, it will run all the rules depending of these files)
 
 
-`snakemake --cluster "sbatch" -j 5  -s scripts/step_stats/process_all_dna_stats.smk`
+
+`snakemake -n --notemp -s scripts/step_stats/process_all_dna_stats.smk`
+
+Dot not remove temporay files
+
+
+`snakemake -n --delete-temp-output -s scripts/step_stats/process_all_dna_stats.smk`
+
+Remove temporary files which have not been removed
+
+`/beegfs/data/soft/bioconda/bin/snakemake --cluster "sbatch" -j 5  -s scripts/step_stats/process_all_dna_stats.smk`
 
 Running on 5 nodes in the cluster
-
-`guix shell snakemake -- snakemake --cluster "sbatch" -j 1  -s scripts/step_stats/process_all_dna_stats.smk`
-
-Why?
 
