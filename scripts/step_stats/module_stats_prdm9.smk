@@ -50,7 +50,7 @@ rule tbl_processing:
     output:
         "results/{accession}/hmm_search/tbl/{domain}_processed"
     shell:
-        "python3 scripts/step_stats/hmmsearch_parser.py -i {input} -o {output}"
+        "python3 scripts/step_stats/python/hmmsearch_parser.py -i {input} -o {output}"
 
 rule domain_processing:
     """
@@ -63,7 +63,7 @@ rule domain_processing:
         processed="results/{accession}/hmm_search/domtbl/{domain}_domains_processed",
         summary="results/{accession}/hmm_search/domtbl/{domain}_domains_summary"
     shell:
-       "python3 scripts/step_stats/domain_parser.py -i {input.domain_data} -o {output.processed} -s {output.summary}"
+       "python3 scripts/step_stats/python/domain_parser.py -i {input.domain_data} -o {output.processed} -s {output.summary}"
 
 
 def domain_done(wildcards):
@@ -78,7 +78,7 @@ rule table_editing:
     output:
         "results/{accession}/summary_table_prdm9_{accession}.csv"
     shell:
-        "python3 scripts/step_stats/table_builder.py -a {wildcards.accession} -o {output}"
+        "python3 scripts/step_stats/python/table_builder.py -a {wildcards.accession} -o {output}"
 
 
 rule read_table:
@@ -97,7 +97,7 @@ rule read_table:
         "results/{accession}/blastp.txt",
     shell:
         """
-        python3 scripts/step_stats/blastp_analysis.py results/{wildcards.accession}/summary_table_prdm9_{wildcards.accession}.csv {wildcards.accession}\
+        python3 scripts/step_stats/python/blastp_analysis.py results/{wildcards.accession}/summary_table_prdm9_{wildcards.accession}.csv {wildcards.accession}\
         """
 
 rule summary:
@@ -123,7 +123,7 @@ rule blastp_results:
         "results/BLASTP_results/blastp_results.csv",
     shell:
         """
-        python3 scripts/step_stats/blastp_table.py\
+        python3 scripts/step_stats/python/blastp_table.py\
         """
 
 rule taxonomy:
@@ -135,7 +135,7 @@ rule taxonomy:
     output:
         "data/resources/sorted_taxonomy.csv"
     shell:
-        "python3 scripts/step_stats/taxonomy.py"
+        "python3 scripts/step_stats/python/taxonomy.py"
 
 rule create_table:
     """
@@ -151,8 +151,8 @@ rule create_table:
         "table_results/table_prdm9.csv"
     shell:
         """
-        python3 scripts/step_stats/krab.py\
-        && python3 scripts/step_stats/krabzf.py\
-        && python3 scripts/step_stats/zf_analysis.py\
-        && python3 scripts/step_stats/table_prdm9.py
+        python3 scripts/step_stats/python/krab.py\
+        && python3 scripts/step_stats/python/krabzf.py\
+        && python3 scripts/step_stats/python/zf_analysis.py\
+        && python3 scripts/step_stats/python/table_prdm9.py
         """
