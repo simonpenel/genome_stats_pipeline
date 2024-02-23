@@ -10,7 +10,6 @@ rule get_blastdb:
         psi=temp("data/ncbi/{accession}/protdb.psi"),
         psd=temp("data/ncbi/{accession}/protdb.psd"),
         pin=temp("data/ncbi/{accession}/protdb.pin"),
-        pog=temp("data/ncbi/{accession}/protdb.pog"),        
         phr=temp("data/ncbi/{accession}/protdb.phr")        
     shell:
         """
