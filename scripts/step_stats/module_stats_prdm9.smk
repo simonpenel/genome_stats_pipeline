@@ -1,3 +1,10 @@
+configfile: "scripts/step_stats/config.json"
+
+if config["mode"] == "cluster":
+    RUNCMD="guix shell hmmer -- "
+else:
+    RUNCMD=""
+
 rule get_blastdb:
     """
     Genere a blast db
@@ -25,7 +32,7 @@ rule hmm_build:
     output:
         "results/hmm_build/{domain}.hmm"
     shell:
-        "hmmbuild {output} {input}"
+        "{RUNCMD} hmmbuild {output} {input}"
  
 rule hmm_search:
     """
@@ -38,7 +45,7 @@ rule hmm_search:
         table = "results/{accession}/hmm_search/tbl/{domain}",
         domains = "results/{accession}/hmm_search/domtbl/{domain}_domains"
     shell:
-        "hmmsearch -E 1E-3 --domE 1E-3 --tblout {output.table} --domtblout {output.domains} --noali {input.model} {input.protein}"
+        "{RUNCMD} hmmsearch -E 1E-3 --domE 1E-3 --tblout {output.table} --domtblout {output.domains} --noali {input.model} {input.protein}"
 
 
 rule tbl_processing:
