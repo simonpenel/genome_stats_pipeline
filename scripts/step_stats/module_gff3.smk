@@ -11,7 +11,7 @@ rule calc_stats_on_gff3:
         cds_fasta=temp("data/ncbi/{accession}/genomic.gff.generated_CDS.fa")
         #other files are not moved into results for the moment
     resources:
-        mem_mb: 20000    
+        mem_mb_per_cpu=18000    
     shell:
         """
         stats_on_gff3_ncbi {input.gff} {input.fasta} &&
