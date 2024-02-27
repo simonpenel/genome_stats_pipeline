@@ -12,7 +12,7 @@ Laurent Duret, Simon Penel, Adrien Raimbault
 
 `snakemake -n -s scripts/step_get_urls/data_dl.smk`
 
-# step 3: calculate the statistics
+# step 3: calculates the statistics
 
 `snakemake -n -s scripts/step_stats/process_global_stats.smk`
 
