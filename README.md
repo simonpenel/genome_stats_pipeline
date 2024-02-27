@@ -8,7 +8,7 @@ Laurent Duret, Simon Penel, Adrien Raimbault
 
 `snakemake -n -s scripts/step_get_organisms/fetch_data.smk`
 
-# step 2: get the url
+# step 2: get the urls
 
 `snakemake -n -s scripts/step_get_urls/data_dl.smk`
 
