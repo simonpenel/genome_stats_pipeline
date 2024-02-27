@@ -1,6 +1,6 @@
 configfile: "scripts/step_stats/config.json"
 
-if config["mode"] == "cluster":
+if config["mode"] == "guix":
     RUNCMD="guix shell hmmer -- "
 else:
     RUNCMD=""
