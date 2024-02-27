@@ -10,7 +10,8 @@ rule calc_stats_on_gff3:
         #to be removed because this output file is big
         cds_fasta=temp("data/ncbi/{accession}/genomic.gff.generated_CDS.fa")
         #other files are not moved into results for the moment
-        
+    resources:
+        mem_mb: 20000    
     shell:
         """
         stats_on_gff3_ncbi {input.gff} {input.fasta} &&
