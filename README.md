@@ -44,11 +44,18 @@ Remove temporary files which have not been removed
 
 Running on 5 nodes in the cluster.
 
+
+`/beegfs/data/soft/bioconda/bin/snakemake --cluster "sbatch" -j 5  --groups get_gff=group0 get_fna=group0 calc_stats_on_gff3=group0 calc_gobal_stats=group0 -s scripts/step_stats/process_all_dna_stats.smk`
+
+Grouping jobs in the same job on the clusters
+
+
 # Using guix in step_stats
 
 The configuration file allows to use guix, as for example in module_stats_prdm9.smk 
 
 This is usefull when it is not possible/easy to install a software, as for example  when using the cluster.
+
 
 # Software used by the pipeline 
  
