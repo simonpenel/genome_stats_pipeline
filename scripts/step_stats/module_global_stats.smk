@@ -1,4 +1,4 @@
-rule calc_gobal_stats:
+rule calc_global_stats:
     """
     Calculate global statistics on a fasta file.
     """
