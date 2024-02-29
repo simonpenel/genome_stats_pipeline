@@ -13,6 +13,7 @@ df = pd.read_csv(sys.argv[1], sep=';')
 accession = sys.argv[2]
 
 with open(f"results/{accession}/blastp.txt", 'w') as writer:
+    taxid = None
     string = ''
     os.system(f"mkdir -p data/ncbi/{accession}/SET_sequences/")
     os.system(f"mkdir -p data/ncbi/{accession}/SET_blastp/")
@@ -54,4 +55,7 @@ with open(f"results/{accession}/blastp.txt", 'w') as writer:
             else:
                 string += f"{prot}{prot_id}\t{prdm_match}\n"
     df.to_csv(f"results/{accession}/summary_table_{accession}.csv", sep=';')
-    writer.write(taxid + string)  
+    if taxid == None:
+        print("Nothing found in blastp")
+    else:
+        writer.write(taxid + string)  
