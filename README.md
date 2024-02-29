@@ -45,7 +45,7 @@ Remove temporary files which have not been removed
 Running on 5 nodes in the cluster.
 
 
-`/beegfs/data/soft/bioconda/bin/snakemake --cluster "sbatch" -j 5  --groups get_gff=group0 get_fna=group0 calc_stats_on_gff3=group0 calc_gobal_stats=group0 -s scripts/step_stats/process_all_dna_stats.smk`
+`/beegfs/data/soft/bioconda/bin/snakemake --cluster "sbatch" -j 5  --groups get_gff=group0 get_fna=group0 calc_stats_on_gff3=group0 calc_global_stats=group0 -s scripts/step_stats/process_all_dna_stats.smk`
 
 Grouping jobs in the same job on the clusters
 
