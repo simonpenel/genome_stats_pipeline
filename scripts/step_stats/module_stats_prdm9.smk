@@ -13,11 +13,11 @@ rule get_blastdb:
     input:
         fasta = "data/ncbi/{accession}/protein.faa"
     output:    
-        psq=temp("data/ncbi/{accession}/protdb.psq"),
-        psi=temp("data/ncbi/{accession}/protdb.psi"),
-        psd=temp("data/ncbi/{accession}/protdb.psd"),
-        pin=temp("data/ncbi/{accession}/protdb.pin"),
-        phr=temp("data/ncbi/{accession}/protdb.phr")        
+        psq="data/ncbi/{accession}/protdb.psq",
+        psi="data/ncbi/{accession}/protdb.psi",
+        psd="data/ncbi/{accession}/protdb.psd",
+        pin="data/ncbi/{accession}/protdb.pin",
+        phr="data/ncbi/{accession}/protdb.phr"        
     shell:
         """
         formatdb -i {input.fasta} -t protdb -n data/ncbi/{wildcards.accession}/protdb -p T -o T

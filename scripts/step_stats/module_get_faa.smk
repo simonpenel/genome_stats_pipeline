@@ -6,7 +6,7 @@ rule get_prot_fasta:
      input:
          url_prot_fasta="data/ncbi/{accession}/url_protein.faa.txt"
      output:
-         file_gff=temp("data/ncbi/{accession}/protein.faa")
+         file_faa="data/ncbi/{accession}/protein.faa"
      shell:
          """
          cd data/ncbi/{wildcards.accession}/ \
