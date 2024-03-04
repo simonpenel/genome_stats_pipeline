@@ -33,7 +33,7 @@ with open(f"results/{accession}/blastp.txt", 'w') as writer:
             zf = row['Nb ZF domains']
         prot = f"<\t{set}\t{krab}\t{ssxrd}\t{zf}\n"
         print(f"Run blastdbcmd -db data/ncbi/{accession}/protdb -entry {row['SeqID']} -range {int(row['SET domain start'])}-{int(row['SET domain end'])} -out data/ncbi/{accession}/SET_sequences/{row['SeqID']}.fa")
-        if int(row['SET domain end'] > int(row['SET domain start'] :
+        if int(row['SET domain end']) > int(row['SET domain start']) :
             ret = os.system(f"blastdbcmd -db data/ncbi/{accession}/protdb -entry {row['SeqID']} -range {int(row['SET domain start'])}-{int(row['SET domain end'])} -out data/ncbi/{accession}/SET_sequences/{row['SeqID']}.fa")
             if ret > 0 :
                 sys.exit("Error during blastdbcmd")
