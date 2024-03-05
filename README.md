@@ -42,12 +42,16 @@ Remove temporary files which have not been removed
 
 `/beegfs/data/soft/bioconda/bin/snakemake --cluster "sbatch" -j 5  -s scripts/step_stats/process_all_dna_stats.smk`
 
-Running on 5 nodes in the cluster.
+Running on 5 nodes in the cluster with conda.
 
 
-`/beegfs/data/soft/bioconda/bin/snakemake --cluster "sbatch" -j 5  --groups get_gff=group0 get_fna=group0 calc_stats_on_gff3=group0 calc_global_stats=group0 -s scripts/step_stats/process_all_dna_stats.smk`
+`snakemake --cluster "sbatch" -j 5  --groups get_gff=group0 get_fna=group0 calc_stats_on_gff3=group0 calc_global_stats=group0 -s scripts/step_stats/process_all_dna_stats.smk`
 
 Grouping jobs in the same job on the clusters
+
+`guix shell snakemake -- snakemake --cluster "sbatch" -j 5  --groups get_gff=group0 get_fna=group0 calc_stats_on_gff3=group0 calc_global_stats=group0 -s scripts/step_stats/process_all_dna_stats.smk`
+
+Using guix (if guix has not yet installed snakemlae on all the cluster machines)
 
 
 # Using guix in step_stats
