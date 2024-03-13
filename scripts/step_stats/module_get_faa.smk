@@ -10,6 +10,6 @@ rule get_prot_fasta:
      shell:
          """
          cd data/ncbi/{wildcards.accession}/ \
-         && wget -i url_protein.faa.txt -O protein.faa.gz \
+         && wget -q -i url_protein.faa.txt -O protein.faa.gz \
          && gunzip  protein.faa.gz \
          """

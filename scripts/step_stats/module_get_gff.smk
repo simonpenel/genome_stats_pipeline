@@ -9,6 +9,6 @@ rule get_gff:
     shell:
         """
         cd data/ncbi/{wildcards.accession}/ \
-        && wget -i url_genomic.gff.txt -O genomic.gff.gz \
+        && wget -q -i url_genomic.gff.txt -O genomic.gff.gz \
         && gunzip  genomic.gff.gz \
         """

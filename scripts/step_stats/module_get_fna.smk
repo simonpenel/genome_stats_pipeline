@@ -9,6 +9,6 @@ rule get_fna:
     shell:
         """
         cd data/ncbi/{wildcards.accession}/ \
-        && wget -i url_genomic.fna.txt -O genomic.fna.gz \
+        && wget -q -i url_genomic.fna.txt -O genomic.fna.gz \
         && gunzip  genomic.fna.gz \
         """
