@@ -14,45 +14,68 @@ Laurent Duret, Simon Penel, Adrien Raimbault
 
 # step 3: calculates the statistics
 
+Calculate the global dna statistics for the organisms who are missing it:
+
 `snakemake -n -s scripts/step_stats/process_global_stats.smk`
 
-This will calculate the global dna statistics for the organisms who are missing it.
 
-
+Calculate the gff dna statistics for the organisms who are missing it:
 
 `snakemake -n -s scripts/step_stats/process_gff3.smk` 
 
-This will calculate the gff dna statistics for the organisms who are missing it.
 
+
+Calculate the global dna statistics AND gff dna statistics for the organisms who are missing global dna statistics and/or gff dna statistics (since input files  will be updated, it will run all the rules depending of these files):
 
 `snakemake -n -s scripts/step_stats/process_all_dna_stats.smk`
 
-This will calculate the global dna statistics AND gff dna statistics for the organisms who are missing global dna statistics and/or gff dna statistics (since input files  will be updated, it will run all the rules depending of these files)
 
-
+Dot not remove temporay files:
 
 `snakemake -n --notemp -s scripts/step_stats/process_all_dna_stats.smk`
 
-Dot not remove temporay files
 
+
+Remove temporary files which have not been removed:
 
 `snakemake -n --delete-temp-output -s scripts/step_stats/process_all_dna_stats.smk`
 
-Remove temporary files which have not been removed
+
+Running on 5 nodes in a local machine:
+
+`/beegfs/data/soft/bioconda/bin/snakemake --cores 5  -s scripts/step_stats/process_all_dna_stats.smk`
+
+
+Running on 5 nodes in the cluster with conda:
 
 `/beegfs/data/soft/bioconda/bin/snakemake --cluster "sbatch" -j 5  -s scripts/step_stats/process_all_dna_stats.smk`
 
-Running on 5 nodes in the cluster with conda.
 
+Running on 5 nodes in the cluster and grouping jobs in the same job on the clusters:
 
 `snakemake --cluster "sbatch" -j 5  --groups get_gff=group0 get_fna=group0 calc_stats_on_gff3=group0 calc_global_stats=group0 -s scripts/step_stats/process_all_dna_stats.smk`
 
-Grouping jobs in the same job on the clusters
+
+
+Running on 5 nodes in the cluster using guix (???):
 
 `guix shell snakemake -- snakemake --cluster "sbatch" -j 5  --groups get_gff=group0 get_fna=group0 calc_stats_on_gff3=group0 calc_global_stats=group0 -s scripts/step_stats/process_all_dna_stats.smk`
 
-Using guix (if guix has not yet installed snakemlae on all the cluster machines)
+Example of slurm file to run snakemake directly on a cluster node (here pbil-deb34):
 
+```
+#!/bin/sh
+#SBATCH--mem=100000
+#SBATCH--time=24:00:00
+#SBATCH--cpus-per-task=10
+#SBATCH--nodelist=pbil-deb34
+uname -a
+echo starting job
+date
+snakemake --cores 10 --rerun-incomplete -s scripts/step_stats/process_all_dna_stats.smk
+date
+echo ok 
+```
 
 # Using guix in step_stats
 
